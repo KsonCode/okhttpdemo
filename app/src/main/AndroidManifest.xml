@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bwie.okhttpdemo">
+    <!-- 普通权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 敏感权限，危险权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activity.LoginActivity"></activity>
+
+        <activity android:name=".ui.activity.RegActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
