@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'//greendao插件
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -18,6 +18,12 @@ android {
     }
 }
 
+greendao {
+    schemaVersion 1
+    daoPackage 'com.bwie.okhttpdemo.gen'
+    targetGenDir 'src/main/java'
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -34,4 +40,6 @@ dependencies {
     implementation project(':lib_core')
 
     implementation 'de.greenrobot:eventbus:3.0.0-beta1'
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'org.greenrobot:greendao:3.2.0'
 }

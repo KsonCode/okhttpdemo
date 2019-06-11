@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -49,6 +50,7 @@ public class OkhttpUtils {
                 .readTimeout(10,TimeUnit.SECONDS)
                 .writeTimeout(10,TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor)
+//                .cache(new Cache())
                 .addInterceptor(new MyInterceptor())//自定义应用拦截器
                 .addNetworkInterceptor(new MyInterceptor())//自定义网络拦截器
                 .addNetworkInterceptor(httpLoggingInterceptor)
@@ -120,6 +122,7 @@ public class OkhttpUtils {
      * @param request
      */
     private void callData(Request request, final NetCallback netCallback) {
+
         okHttpClient.newCall(request)
                 .enqueue(new Callback() {
                     @Override

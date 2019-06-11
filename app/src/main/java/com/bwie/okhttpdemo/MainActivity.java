@@ -1,6 +1,7 @@
 package com.bwie.okhttpdemo;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.support.constraint.ConstraintLayout;
@@ -17,10 +18,21 @@ import com.bwie.okhttpdemo.api.UserApi;
 import com.bwie.okhttpdemo.entity.UserInfoEntity;
 import com.bwie.okhttpdemo.net.MyInterceptor;
 import com.google.gson.Gson;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.uuzuche.lib_zxing.camera.BitmapLuminanceSource;
+import com.uuzuche.lib_zxing.decoding.DecodeFormatManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -216,6 +228,56 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+
+//
+//        MultiFormatReader multiFormatReader = new MultiFormatReader();
+//
+//        // 解码的参数
+//        Hashtable<DecodeHintType, Object> hints = new Hashtable<DecodeHintType, Object>(2);
+//        // 可以解析的编码类型
+//        Vector<BarcodeFormat> decodeFormats = new Vector<BarcodeFormat>();
+//        if (decodeFormats == null || decodeFormats.isEmpty()) {
+//            decodeFormats = new Vector<BarcodeFormat>();
+//
+//            // 这里设置可扫描的类型，我这里选择了都支持
+//            decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
+//            decodeFormats.addAll(DecodeFormatManager.QR_CODE_FORMATS);
+//            decodeFormats.addAll(DecodeFormatManager.DATA_MATRIX_FORMATS);
+//        }
+//        hints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);
+//        // 设置继续的字符编码格式为UTF8
+//        // hints.put(DecodeHintType.CHARACTER_SET, "UTF8");
+//        // 设置解析配置参数
+//        multiFormatReader.setHints(hints);
+//
+//        // 开始对图像资源解码
+//        Result rawResult = null;
+//        try {
+//            rawResult = multiFormatReader.decodeWithState(new BinaryBitmap(new HybridBinarizer(new BitmapLuminanceSource(mBitmap))));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        if (rawResult != null) {
+//            if (analyzeCallback != null) {
+//                analyzeCallback.onAnalyzeSuccess(mBitmap, rawResult.getText());
+//            }
+//        } else {
+//            if (analyzeCallback != null) {
+//                analyzeCallback.onAnalyzeFailed();
+//            }
+//        }
+//        CodeUtils.analyzeBitmap(mBitmap, new CodeUtils.AnalyzeCallback() {
+//            @Override
+//            public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
+//                Toast.makeText(MainActivity.this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onAnalyzeFailed() {
+//                Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
 
 
